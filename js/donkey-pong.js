@@ -59,19 +59,11 @@ function donkeyReset() {
 }
 function computerMovement() {
 	var paddle2YCenter = paddle2Y + (PADDLE_HEIGHT/2);
-<<<<<<< HEAD:js/donkey-pong.js
 	if(paddle2YCenter < donkeyY - 35) {
 		paddle2Y = paddle2Y + 5;
 	}
 	else if(paddle2YCenter > donkeyY + 35) {
 		paddle2Y = paddle2Y - 5;
-=======
-	if(paddle2YCenter < ballY - 35) {
-		paddle2Y = paddle2Y + 6;
-	}
-	else if(paddle2YCenter > ballY + 35) {
-		paddle2Y = paddle2Y - 6;
->>>>>>> parent of c9606b0... AI tweak:game.html
 	}
 }
 function moveEverything() {
