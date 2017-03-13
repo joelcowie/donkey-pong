@@ -15,6 +15,12 @@ const PADDLE_HEIGHT = 100;
 var donkey = new Image()
 donkey.src = './donkey.png'
 
+$("#startButton").click(function () {
+		$("#startScreen").hide();
+		$("#gameCanvas").show();
+		startGame();
+});
+
 function mousePosition(evt) {
 	var rect = canvas.getBoundingClientRect();
 	var root = document.documentElement;
@@ -32,7 +38,7 @@ function handleMouseClick(evt) {
 		showingWinScreen = false;
 	}
 }
-window.onload = function() {
+function startGame() {
 	canvas = document.getElementById('gameCanvas');
 	canvasContext = canvas.getContext('2d');
 	var framesPerSecond = 60;
@@ -73,9 +79,9 @@ function moveEverything() {
 	computerMovement();
 	donkeyX = donkeyX + donkeySpeedX;
 	donkeyY = donkeyY + donkeySpeedY;
-	if(donkeyX < 30) {
-		if(donkeyY > paddle1Y &&
-			donkeyY < paddle1Y+PADDLE_HEIGHT) {
+	if(donkeyX+5 < 30) {
+		if(donkeyY+10 > paddle1Y &&
+			donkeyY-10 < paddle1Y+PADDLE_HEIGHT) {
 			donkeySpeedX = -donkeySpeedX;
 			var deltaY = donkeyY
 				-(paddle1Y+PADDLE_HEIGHT/2);
@@ -112,16 +118,19 @@ function drawNet() {
 	}
 }
 function drawEverything() {
+	canvasContext.font="30px Courier";
 	// next line blanks out the screen with black
 	colorRect(0,0,canvas.width,canvas.height,'black');
 	if(showingWinScreen) {
 		canvasContext.fillStyle = 'white';
+		canvasContext.textAlign = 'center';
+		var centerWidth = canvas.width/2;
 		if(player1Score >= WINNING_SCORE) {
-			canvasContext.fillText("You win!", 365, 200);
+			canvasContext.fillText("Congratulations, you win!", centerWidth, 200);
 		} else if(player2Score >= WINNING_SCORE) {
-			canvasContext.fillText("You lose :(", 365, 200);
+			canvasContext.fillText("Sorry, you lose :(", centerWidth, 200);
 		}
-		canvasContext.fillText("click to continue", 350, 300);
+		canvasContext.fillText("click to play again", centerWidth, 300);
 		return;
 	}
 	drawNet();
