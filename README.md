@@ -4,7 +4,7 @@
 
 [Donkey Pong][donkey-pong]
 
-Donkey Pong is built with JavaScript, HTML5 Canvas, and a tiny bit of jQuery. 
+Donkey Pong is built with JavaScript, HTML5 Canvas, and a smidgen of jQuery. 
 
 
 [donkey-pong]: http://www.joelcowie.com/donkey-pong
